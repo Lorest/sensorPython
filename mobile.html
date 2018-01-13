@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+</head>
+<body>
+<h1>Mobile</h1>
+<button onclick="sendToServe(this)">Droite</button>
+<button onclick="sendToServe(this)">Gauche</button>
+<button onclick="sendToServe(this)">Haut</button>
+<button onclick="sendToServe(this)">Bas</button>
+<script type="text/javascript">
+
+	var exampleSocket = new WebSocket("ws://localhost:8765");
+
+	exampleSocket.onopen = function (event) {
+	  exampleSocket.send("mobile");
+	}
+
+	exampleSocket.onmessage = function(event) {
+		
+	}
+
+	function sendToServe(el) {
+		exampleSocket.send(el.innerHTML);
+	}
+	
+
+</script>
+</body>
+</html>
